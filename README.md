@@ -1,6 +1,8 @@
 # Gemini-Voice
 Assistant vocal pour PC
 
+Discutez directement avec Gemini en utilisant votre micro !
+
 # Installation
 ```git clone https://github.com/64cipher/Gemini-Voice.git```
 
