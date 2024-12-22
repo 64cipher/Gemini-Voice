@@ -3,6 +3,8 @@ Assistant vocal pour PC
 
 Discutez directement avec Gemini en utilisant votre micro !
 
+Dites "Gemini", puis attendez que la console affiche "Parlez à Gemini..."
+
 # Installation
 ```git clone https://github.com/64cipher/Gemini-Voice.git```
 
