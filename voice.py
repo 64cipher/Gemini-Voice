@@ -3,26 +3,30 @@ import speech_recognition as sr
 import pyttsx3
 import os
 import simpleaudio as sa
+import re
 
 
 # Remplacez par votre clé API Google Gemini
-GOOGLE_API_KEY = "API-KEY-HERE"
+GOOGLE_API_KEY = "AIzaSyBzl1aPHhlreK2mUonXVdh1pDIBG3EYoMo"
 genai.configure(api_key=GOOGLE_API_KEY)
 
-model = genai.GenerativeModel('gemini-2.0-flash-exp')
+model = genai.GenerativeModel('gemini-pro')
 
 
 def parler(texte, vitesse=175, voix_id=None):
+    # Supprimer les caractères spéciaux
+    texte = re.sub(r'[^a-zA-Z0-9\s\.,?!]', ' ', texte) # Conserve la ponctuation et les chiffres
+
     engine = pyttsx3.init()
-    engine.setProperty('rate', vitesse)  # Ajuste la vitesse
+    engine.setProperty('rate', vitesse)
 
     if voix_id:
         engine.setProperty('voice', voix_id)
     else:
-      voices = engine.getProperty('voices') # permet de récupérer la liste des voix
+      voices = engine.getProperty('voices')
       for index, voice in enumerate(voices):
-            print(f"Voice {index}: {voice.name}") # permet d'afficher le nom de chaque voix disponible
-            if 'french' in voice.name.lower(): # On selectionne la première voix française si pas de voix_id
+            print(f"Voice {index}: {voice.name}")
+            if 'french' in voice.name.lower():
               engine.setProperty('voice', voice.id)
               break
 
